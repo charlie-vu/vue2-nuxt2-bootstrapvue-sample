@@ -38,7 +38,7 @@
                         <h3>Features</h3>
                         <ul class="mt-3">
                             <li>Cookies, Global store, Global Variables</li>
-                            <li>Connect APIs</li>
+                            <li>Connecting APIs</li>
                             <li>Day, time formatting</li>
                             <li>JS utilities (lodash)</li>
                             <li>Internationalization</li>
