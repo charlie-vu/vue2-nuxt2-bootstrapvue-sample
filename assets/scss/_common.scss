@@ -52,6 +52,10 @@ a:hover {
   color: inherit;
 }
 
+ul > li {
+  list-style-type: none;
+}
+
 $weights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
 @each $weight in $weights {
   .fw-#{$weight} {
