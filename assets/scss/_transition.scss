@@ -1,0 +1,29 @@
+.layout-enter-active,
+.layout-leave-active {
+  transition: all 0.3s;
+}
+.layout-enter,
+.layout-leave-active {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s;
+}
+.page-enter,
+.page-leave-active {
+  transform: translateX(1rem);
+  opacity: 0;
+}
+
+.flip-y-enter-active,
+.flip-y-leave-active {
+  transition: all 0.3s;
+}
+.flip-y-enter,
+.flip-y-leave-active {
+  transform: rotateY(90deg);
+  opacity: 0;
+}

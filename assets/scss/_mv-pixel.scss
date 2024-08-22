@@ -1,0 +1,75 @@
+// ====== Responsive Bootstrap Breakpoints (mobile first) => Apply to all CSS attr within
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    // Ex.: w-lg-900px => @media (min-width: large-screen) => width: 900px
+    // Apply to all CSS attr wrapped inside
+    @for $i from 0 through 1920 {
+      @each $name,
+        $prop
+          in (
+            "w": "width",
+            "h": "height",
+            "mw": "max-width",
+            "mh": "max-height",
+            "min-w": "min-width",
+            "min-h": "min-height"
+          )
+      {
+        .#{$name}#{$infix}-#{$i}px {
+          #{$prop}: #{$i}px !important;
+        }
+      }
+    }
+
+    @for $i from 0 through 128 {
+      .fs#{$infix}-#{$i}px {
+        font-size: 1px * $i !important;
+      }
+
+      // Auto-spacing for d-flex
+      .gap#{$infix}-#{$i}px {
+        gap: #{$i}px !important;
+      }
+      .column-gap#{$infix}-#{$i}px {
+        column-gap: #{$i}px !important;
+      }
+      // row-gap can be used for <b-row class="row-gap-16px">
+      .row-gap#{$infix}-#{$i}px {
+        row-gap: #{$i}px !important;
+      }
+
+      // For <b-row class="gutter-width-*px">
+      .row {
+        $step: 4; // 8 12 16 20 24 ... 128
+        @if $i % $step == 0 {
+          &.gutter-width#{$infix}-#{$i}px {
+            margin-left: -#{$i * 0.5}px;
+            margin-right: -#{$i * 0.5}px;
+            > .col,
+            [class*="col-"] {
+              padding-left: #{$i * 0.5}px;
+              padding-right: #{$i * 0.5}px;
+            }
+          }
+        }
+      }
+
+      .rounded#{$infix}-#{$i}px {
+        border-radius: #{$i}px !important;
+      }
+    }
+  }
+}
+// ====== End Responsive ======
+
+// === Glass Effect - Blur
+// Ex.: class="blur-130" => backdrop-filter: blur(130px)
+@for $pixel from 0 through 256 {
+  .blur-#{$pixel}px {
+    -webkit-backdrop-filter: blur($pixel + px) !important;
+    backdrop-filter: blur($pixel + px) !important;
+  }
+}
+// ====== End Glass Effect ======

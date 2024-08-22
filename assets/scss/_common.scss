@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard", sans-serif;
+}
+body {
+  // Due to layout/page transition movement x axis
+  overflow-x: hidden;
+
+  // Line break non-alphabet
+  // Before: 요청 사용자 아이디 => 요청 사용자 아이<br>디
+  // After: 요청 사용자 아이디 => 요청 사용자<br>아이디
+  line-break: strict;
+  word-break: keep-all;
+}
+
+// Apply too all <html-tag>
+::-webkit-scrollbar {
+  $size: 14px;
+  height: $size;
+  width: $size;
+  background: transparent;
+  z-index: 12;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 10px;
+  z-index: 12;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  margin: 4px;
+  min-height: 32px;
+  min-width: 32px;
+
+  -webkit-transition: background-color 0.28s ease-in-out;
+  transition: background-color 0.28s ease-in-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 0;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+$weights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
+@each $weight in $weights {
+  .fw-#{$weight} {
+    font-weight: $weight !important;
+  }
+}
+
+// d-flex related
+.flex-center {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+// Position related
+.translate-middle-x {
+  transform: translateX(-50%);
+}
+.translate-middle-y {
+  transform: translateY(-50%);
+}
+.translate-middle {
+  transform: translate(-50%, -50%);
+}
+
+// Addition to w-auto
+.w-fit {
+  width: fit-content !important;
+}
+.w-max {
+  width: max-content !important;
+}
+.w-min {
+  width: min-content !important;
+}
+
+// Cursor
+.cursor-pointer {
+  cursor: pointer !important;
+}

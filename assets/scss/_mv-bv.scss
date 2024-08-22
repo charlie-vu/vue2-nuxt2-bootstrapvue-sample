@@ -1,0 +1,16 @@
+// Override $bvModal
+.modal-dialog.mv-modal {
+  .modal-content {
+    .modal-header {
+    }
+    .modal-body {
+      text-align: center;
+      font-weight: 700;
+    }
+    .modal-footer {
+      justify-content: center;
+      .btn {
+      }
+    }
+  }
+}

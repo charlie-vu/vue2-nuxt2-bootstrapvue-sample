@@ -1,0 +1,87 @@
+@for $pct from 0 through 100 {
+  // ====== Responsive Bootstrap Breakpoints (mobile first) => Apply to all CSS attr within
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      // Ex.: min-w-30 => min-width: 30%;
+      //      min-w-lg-50 => @media (min-width: large-screen) => min-width: 50%
+      @each $name,
+        $prop
+          in (
+            "w": "width",
+            "h": "height",
+            "mw": "max-width",
+            "mh": "max-height",
+            "min-w": "min-width",
+            "min-h": "min-height"
+          )
+      {
+        .#{$name}#{$infix}-#{$pct} {
+          #{$prop}: $pct * 1% !important;
+        }
+      }
+    }
+  }
+  // ====== End Responsive ======
+
+  // vw - Ex.: min-vw-30 => min-width: 30vw
+  @each $name,
+    $prop in ("vw": "width", "min-vw": "min-width", "max-vw": "max-width")
+  {
+    .#{$name}-#{$pct} {
+      #{$prop}: #{$pct}vw !important;
+    }
+  }
+  // vh
+  @each $name,
+    $prop in ("vh": "height", "min-vh": "min-height", "max-vh": "max-height")
+  {
+    .#{$name}-#{$pct} {
+      #{$prop}: #{$pct}vh !important;
+    }
+  }
+  // dvh
+  @each $name,
+    $prop in ("dvh": "height", "min-dvh": "min-height", "max-dvh": "max-height")
+  {
+    .#{$name}-#{$pct} {
+      #{$prop}: #{$pct}dvh !important;
+    }
+  }
+
+  // Position
+  // Ex.: class="top-15" => top: 15%
+  @each $anchor in ("top", "bottom", "left", "right") {
+    .#{$anchor}-#{$pct} {
+      #{$anchor}: $pct * 1% !important;
+    }
+  }
+
+  // Opacity
+  .opacity-#{$pct} {
+    opacity: $pct * 1% !important;
+  }
+}
+
+// === Glass Effect ===
+// Glass effect, pair with .blur-*px (in needed)
+@for $alpha from 0 through 100 {
+  .bg-white-#{$alpha} {
+    background-color: rgba(255, 255, 255, calc($alpha/100)) !important;
+  }
+}
+// Gradient white vertical (have to pair with .bg-*)
+// Ex.: .gradient-white-80-20 => background-image: linear-gradient(to bottom, rgba(white, 0.8), (white, 0.2))
+@for $alpha-top from 0 through 100 {
+  @for $alpha-bottom from 0 through 100 {
+    .gradient-white-#{$alpha-top}-#{$alpha-bottom} {
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, calc($alpha-top/100)),
+        rgba(255, 255, 255, calc($alpha-bottom/100))
+      ) !important;
+    }
+  }
+}
+// ====== End Glass Effect ======
