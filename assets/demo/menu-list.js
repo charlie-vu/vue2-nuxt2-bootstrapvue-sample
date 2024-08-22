@@ -1,5 +1,5 @@
 const menuList = [
-    { name: 'HOMEPAGE (redirect to TEST)', path: '/', pathName: 'home' },
+    { name: 'HOMEPAGE', path: '/', pathName: 'home' },
     { name: 'TESTPAGE', path: '/test', pathName: 'test' },
     { name: 'LISTPAGE', path: '/list', pathName: 'list' },
 
